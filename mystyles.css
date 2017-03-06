@@ -1,8 +1,8 @@
-.container {
-	margin-top: 100px;
+#main {
+		margin-top: 100px;
+	margin-bottom: 200px;
+
 }
-
-
 
 .flow-text {
 	width: 253px;
@@ -63,10 +63,10 @@ p {
 }
 
 button {
-	width: 185px;
+	min-width: 120px;
+	padding: 0 20px;
 	height: 50px;
-	margin-left: 5px;
-	margin-right: 5px;
+	margin-left: 10px;
 	background-color: #000000;
 	font-family: Courier;
 	font-size: 16px;
@@ -83,21 +83,55 @@ button:hover {
 	background-color: blue;
 }
 button[disabled] {
-    background-color: red;
+    background-color: #A3A3A3;
 }
 #submit {
 	background-color: blue;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+    float: right;
 }
 
 #submit:hover {
-	background-color: green;
+	background-color: black;
 }
 
 .divider {
 	margin-top: 50px;
 	margin-bottom: 50px;
 }
+footer.page-footer {
+	padding: 10px 0;
+    background-color:white;
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    border-top: thin solid #b5b5b5;
 
+}
+footer.page-footer .row {
+	margin-bottom: 0;
+	padding: 10px 0;
+}
 textarea {
 	width: 100%;
+	font-family: Courier;
+	font-size: 16px;
+	border: none;
+	padding: 0;
+
+}
+textarea.materialize-textarea {
+	border: none;
+	padding: 0;
+	margin: 0px;
+}
+
+textarea.materialize-textarea:focus {
+	border-bottom: none !important;
+	box-shadow: 0 0 0 0 #ffffff !important;
 }

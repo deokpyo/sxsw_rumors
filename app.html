@@ -12,7 +12,8 @@
 </head>
 
 <body>
-	<div class="container">
+
+	<div class="container" id="main">
 		<div class="row">
 			<div class="grid-example col s12 center-align"><span class="flow-text">Top Rumors</span> </div>
 		</div>
@@ -24,20 +25,22 @@
 		</div>
 		<div id="recent-posts">
 		</div>
-        <div class="divider"></div>
-		<div class="row">
-			<form class="col s10">
-				<div class="row">
-					<div class="input-field col s10">
-						<textarea id="post-input"></textarea>
-					</div>
-				</div>
-			</form>
-			<div class="col s2">
-				<button type="submit" id="submit">POST</button>
-			</div>
-		</div>
 	</div>
+
+	<footer class="page-footer">
+		<div class="container">
+		<div class="row">
+			<div class="input-field col s12">
+				<textarea id="post-input" class="materialize-textarea left" placeholder="Input text here"></textarea><button type="submit" id="submit" class="right">POST</button>
+			</div>
+			<!--<div class="col s2">
+				<button type="submit" id="submit">POST</button>
+			</div>-->
+		</div>
+		</div>
+	</footer>
+
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
