@@ -1,11 +1,11 @@
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCD4SpRabP773FK-oN3QPpdPP2DzqJ8CH0",
-  authDomain: "codingbootcamp-a5fa9.firebaseapp.com",
-  databaseURL: "https://codingbootcamp-a5fa9.firebaseio.com",
-  storageBucket: "codingbootcamp-a5fa9.appspot.com",
-  messagingSenderId: "915705317589"
-};
+    apiKey: "AIzaSyBaF7vfKfeIIOvzfcUb-tdq5TEVfEWSsfU",
+    authDomain: "sxsw-rumors.firebaseapp.com",
+    databaseURL: "https://sxsw-rumors.firebaseio.com",
+    storageBucket: "sxsw-rumors.appspot.com",
+    messagingSenderId: "1015580919458"
+  };
 
 firebase.initializeApp(config);
 
