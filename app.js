@@ -1,10 +1,10 @@
 // Initialize Firebase
 var config = {
-      apiKey: "AIzaSyBaF7vfKfeIIOvzfcUb-tdq5TEVfEWSsfU",
-      authDomain: "sxsw-rumors.firebaseapp.com",
-      databaseURL: "https://sxsw-rumors.firebaseio.com",
-      storageBucket: "sxsw-rumors.appspot.com",
-      messagingSenderId: "1015580919458"
+    apiKey: "AIzaSyBaF7vfKfeIIOvzfcUb-tdq5TEVfEWSsfU",
+    authDomain: "sxsw-rumors.firebaseapp.com",
+    databaseURL: "https://sxsw-rumors.firebaseio.com",
+    storageBucket: "sxsw-rumors.appspot.com",
+    messagingSenderId: "1015580919458"
   };
 
 firebase.initializeApp(config);
@@ -32,6 +32,8 @@ $("#submit").on("click", function () {
       shit: 0
     });
 
+    $("#post-input").val("");
+
     // Don't refresh the page!
     return false;
   }
@@ -39,13 +41,20 @@ $("#submit").on("click", function () {
 
 });
 
-database.ref().orderByChild("legit").limitToLast(3).on("value", function (snapshot) {
+var num = 1;
+var tops = [];
+database.ref().orderByChild("legit").limitToLast(3).on("child_added", function (snapshot) {
   var data = snapshot.val();
+  console.log(data);
   var key = snapshot.key;
   var div_all = $("<div>");
-  var num = $.map(data, function(n, i) { return i; }).length;
+  console.log(num);
+  tops.push(data);
+  console.log(tops);
+  //var num = 3;
 
-  for (i in data) {
+
+    // console.log(num);
     // Create divs
     var div_row = $("<div class='row'>");
     var div_s1 = $("<div class='col s1'>");
@@ -54,7 +63,7 @@ database.ref().orderByChild("legit").limitToLast(3).on("value", function (snapsh
 
     // Date posted
     var h2 = $("<h2>");
-    h2.text(data[i].date);
+    h2.text(data.date);
     div_s12.append(h2);
 
     // Post Number
@@ -64,12 +73,12 @@ database.ref().orderByChild("legit").limitToLast(3).on("value", function (snapsh
 
     // Post body
     var p = $("<p>");
-    p.text(data[i].input);
+    p.text(data.input);
     div_s11.append(p);
 
     // Legit count
     var legit = $("<h5 class='col s12 right-align'>");
-    legit.text("Legit count: " + data[i].legit);
+    legit.text("Legit count: " + data.legit);
     div_s11.append(legit);
 
     // Append everything
@@ -78,13 +87,13 @@ database.ref().orderByChild("legit").limitToLast(3).on("value", function (snapsh
     div_row.append(div_s11);
 
     // Prepend to html tag for descending order
-    div_all.prepend(div_row);
+    div_all.append(div_row);
 
     // Decrement
-    num--;
-  }
+    num++;
 
-  $("#top-posts").html(div_all);
+
+  $("#top-posts").append(div_all);
 
 });
 
