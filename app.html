@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>SXSW Anonymous</title>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+	<link rel="stylesheet" href="mystyles.css">
+	<!-- LINK TO FIREBASE GOES HERE -->
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="grid-example col s12 center-align"><span class="flow-text">Top Rumors</span> </div>
+		</div>
+		<div id="top-posts">
+		</div>
+		<div class="divider"></div>
+		<div class="row">
+			<div class="grid-example col s12 center-align"><span class="flow-text">Feed</span> </div>
+		</div>
+		<div id="recent-posts">
+		</div>
+        <div class="divider"></div>
+		<div class="row">
+			<form class="col s10">
+				<div class="row">
+					<div class="input-field col s10">
+						<textarea id="post-input"></textarea>
+					</div>
+				</div>
+			</form>
+			<div class="col s2">
+				<button type="submit" id="submit">POST</button>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+<script src="app.js"></script>
+
+</html>
