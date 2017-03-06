@@ -113,8 +113,8 @@ database.ref().on("child_added", function (snapshot) {
   div_s12.append(p);
 
   // Buttons
-  var btn_legit = $("<button class='btn-legit'>Legit</button>");
-  var btn_shit = $("<button class='btn-shit'>Shit</button>");
+  var btn_legit = $("<button class='btn-legit'>LEGIT</button>");
+  var btn_shit = $("<button class='btn-shit'>SHIT</button>");
   btn_legit.attr("data-key", key);
   btn_shit.attr("data-key", key);
   div_s6.append(btn_legit);
