@@ -1,11 +1,5 @@
 // Initialize Firebase
-// var config = {
-//     apiKey: "AIzaSyBaF7vfKfeIIOvzfcUb-tdq5TEVfEWSsfU",
-//     authDomain: "sxsw-rumors.firebaseapp.com",
-//     databaseURL: "https://sxsw-rumors.firebaseio.com",
-//     storageBucket: "sxsw-rumors.appspot.com",
-//     messagingSenderId: "1015580919458"
-//   };
+// Dina's Firebase'
 var config = {
     apiKey: "AIzaSyBaF7vfKfeIIOvzfcUb-tdq5TEVfEWSsfU",
     authDomain: "sxsw-rumors.firebaseapp.com",
@@ -13,6 +7,14 @@ var config = {
     storageBucket: "sxsw-rumors.appspot.com",
     messagingSenderId: "1015580919458"
   };
+// Jimmy's Firebase'
+// var config = {
+//   apiKey: "AIzaSyCD4SpRabP773FK-oN3QPpdPP2DzqJ8CH0",
+//   authDomain: "codingbootcamp-a5fa9.firebaseapp.com",
+//   databaseURL: "https://codingbootcamp-a5fa9.firebaseio.com",
+//   storageBucket: "codingbootcamp-a5fa9.appspot.com",
+//   messagingSenderId: "915705317589"
+// };
 
 
 firebase.initializeApp(config);
@@ -36,12 +38,13 @@ $("#submit").on("click", function () {
     database.ref().push({
       input: input,
       date: date,
-      legit: 0,
-      shit: 0
+      likes: {
+        legit: 0,
+        shit: 0
+      }
     });
 
     $("#post-input").val("");
-
     // Don't refresh the page!
     return false;
   }
@@ -50,44 +53,55 @@ $("#submit").on("click", function () {
 });
 
 var num = 1;
-var tops = [];
+
 // get top 3 posts
-database.ref().orderByChild("legit").limitToLast(3).on("child_added", function (snapshot) {
+database.ref().orderByChild("likes/legit").limitToLast(3).on("value", function (snapshot) {
   var data = snapshot.val();
-  console.log(data);
-  var key = snapshot.key;
-  var div_all = $("<div>");
-  console.log(num);
-  tops.push(data);
-  console.log(tops);
-  //var num = 3;
+  var top_posts = [];
+  var j = 1;
+  for (i in data) {
+    var post = [];
+    console.log(j + ": " + data[i].input + " - " + data[i].likes.legit);
+    j++;
+    post.push(data[i].likes.legit, data[i].input, data[i].date);
+    top_posts.push(post);
+  }
 
+  function Comparator(a, b) {
+    if (a[0] > b[0]) return -1;
+    if (a[0] < b[0]) return 1;
+    return 0;
+  }
 
-    // console.log(num);
-    // Create divs
+  top_posts.sort(Comparator);
+
+  console.log(top_posts);
+
+   var div_all = $("<div>");
+
+  for (k = 0; k < top_posts.length; k++) {
     var div_row = $("<div class='row'>");
     var div_s1 = $("<div class='col s1'>");
     var div_s11 = $("<div class='col s11'>");
     var div_s12 = $("<div class='col s12'>");
-
     // Date posted
     var h2 = $("<h2>");
-    h2.text(data.date);
+    h2.text(top_posts[k][2]);
     div_s12.append(h2);
 
     // Post Number
     var h3 = $("<h3>");
-    h3.text(num);
+    h3.text(k + 1);
     div_s1.append(h3);
 
     // Post body
     var p = $("<p>");
-    p.text(data.input);
+    p.text(top_posts[k][1]);
     div_s11.append(p);
 
     // Legit count
     var legit = $("<h5 class='col s12 right-align'>");
-    legit.text("Legit count: " + data.legit);
+    legit.text("Legit count: " + top_posts[k][0]);
     div_s11.append(legit);
 
     // Append everything
@@ -98,11 +112,9 @@ database.ref().orderByChild("legit").limitToLast(3).on("child_added", function (
     // Prepend to html tag for descending order
     div_all.append(div_row);
 
-    // Decrement
-    num++;
+  }
 
-
-  $("#top-posts").append(div_all);
+  $("#top-posts").html(div_all);
 
 });
 
@@ -152,11 +164,11 @@ database.ref().on("child_added", function (snapshot) {
 $(document.body).on("click", ".btn-legit", function () {
   var key = $(this).attr("data-key");
   //$("#" + key).find("button").attr("disabled", true);
-  return database.ref(key).once("value").then(function (snapshot) {
-    console.log(snapshot.val().legit);
+  return database.ref(key + "/likes").once("value").then(function (snapshot) {
+    //console.log(snapshot.val().legit);
     var legit = snapshot.val().legit;
     legit++;
-    database.ref(key).update({ legit: legit });
+    database.ref(key + "/likes").update({ legit: legit });
   });
 });
 
@@ -164,11 +176,11 @@ $(document.body).on("click", ".btn-legit", function () {
 $(document.body).on("click", ".btn-shit", function () {
   var key = $(this).attr("data-key");
   //$("#" + key).find("button").attr("disabled", true);
-  return database.ref(key).once("value").then(function (snapshot) {
-    console.log(snapshot.val().shit);
+  return database.ref(key + "/likes").once("value").then(function (snapshot) {
+    //console.log(snapshot.val().shit);
     var shit = snapshot.val().shit;
     shit++;
-    database.ref(key).update({ shit: shit });
+    database.ref(key + "/likes").update({ shit: shit });
   });
 
 });
