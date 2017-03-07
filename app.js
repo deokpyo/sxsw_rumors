@@ -1,4 +1,11 @@
 // Initialize Firebase
+// var config = {
+//     apiKey: "AIzaSyBaF7vfKfeIIOvzfcUb-tdq5TEVfEWSsfU",
+//     authDomain: "sxsw-rumors.firebaseapp.com",
+//     databaseURL: "https://sxsw-rumors.firebaseio.com",
+//     storageBucket: "sxsw-rumors.appspot.com",
+//     messagingSenderId: "1015580919458"
+//   };
 var config = {
     apiKey: "AIzaSyBaF7vfKfeIIOvzfcUb-tdq5TEVfEWSsfU",
     authDomain: "sxsw-rumors.firebaseapp.com",
@@ -6,6 +13,7 @@ var config = {
     storageBucket: "sxsw-rumors.appspot.com",
     messagingSenderId: "1015580919458"
   };
+
 
 firebase.initializeApp(config);
 
