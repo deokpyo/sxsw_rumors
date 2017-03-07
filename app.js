@@ -43,6 +43,7 @@ $("#submit").on("click", function () {
 
 var num = 1;
 var tops = [];
+// get top 3 posts
 database.ref().orderByChild("legit").limitToLast(3).on("child_added", function (snapshot) {
   var data = snapshot.val();
   console.log(data);
