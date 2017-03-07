@@ -142,7 +142,7 @@ database.ref().on("child_added", function (snapshot) {
 // Capture Legit Button Click
 $(document.body).on("click", ".btn-legit", function () {
   var key = $(this).attr("data-key");
-  $("#" + key).find("button").attr("disabled", true);
+  //$("#" + key).find("button").attr("disabled", true);
   return database.ref(key).once("value").then(function (snapshot) {
     console.log(snapshot.val().legit);
     var legit = snapshot.val().legit;
@@ -154,7 +154,7 @@ $(document.body).on("click", ".btn-legit", function () {
 // Capture Shit Button Click
 $(document.body).on("click", ".btn-shit", function () {
   var key = $(this).attr("data-key");
-  $("#" + key).find("button").attr("disabled", true);
+  //$("#" + key).find("button").attr("disabled", true);
   return database.ref(key).once("value").then(function (snapshot) {
     console.log(snapshot.val().shit);
     var shit = snapshot.val().shit;
