@@ -100,7 +100,7 @@ database.ref().orderByChild("likes/legit").limitToLast(3).on("value", function (
     div_s11.append(p);
 
     // Legit count
-    var legit = $("<h5 class='col s12 right-align'>");
+    var legit = $("<h5 class='col s12 right-align legit-count'>");
     legit.text("Legit count: " + top_posts[k][0]);
     div_s11.append(legit);
 

@@ -45,8 +45,11 @@ h3 {
 }
 h5  {
 	font-family: Courier;
-	font-size: 16px;
+	font-size: 12px;
 	color: #b5b5b5;
+}
+h5.legit-count{
+	font-size: 16px;
 }
 p { 
 	width: 100%;
