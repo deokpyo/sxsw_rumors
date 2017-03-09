@@ -109,7 +109,7 @@ database.ref().orderByChild("likes/legit").limitToLast(3).on("value", function (
     div_row.append(div_s1);
     div_row.append(div_s11);
 
-    // Prepend to html tag for descending order
+    // Append to html tag for ascending order
     div_all.append(div_row);
 
   }
@@ -153,7 +153,7 @@ database.ref().on("child_added", function (snapshot) {
   div.append(div_s6);
 
   // Append to html tag
-  $("#recent-posts").append(div);
+  $("#recent-posts").prepend(div);
 
   // Handle the errors
 }, function (errorObject) {

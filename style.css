@@ -45,7 +45,7 @@ h3 {
 }
 h5  {
 	font-family: Courier;
-	font-size: 12px;
+	font-size: 16px;
 	color: #b5b5b5;
 }
 p { 
@@ -55,7 +55,7 @@ p {
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
-	line-height: 30px;
+	line-height: 45px;
 	letter-spacing: 2px;
 	color: #000000;
 	margin-bottom: 20px;
@@ -120,7 +120,7 @@ footer.page-footer .row {
 textarea {
 	width: 100%;
 	font-family: Courier;
-	font-size: 16px;
+	font-size: 18px !important;
 	border: none;
 	padding: 0;
 
